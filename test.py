@@ -26,6 +26,15 @@ data, data_info = readSEGY(join(dataset_name, 'data.segy'))
 #Load trained model (run train.py to create trained
 network = TextureNet(n_classes=2)
 network.load_state_dict(torch.load(join('F3', 'saved_model.pt')))
+
+
+
+user_choice_gpu = input("Do you want to use a GPU? Only NVidia GPUs can be used.")
+if lower.user_choice_gpu=='yes':
+    use_gpu = True
+else:
+    use_gpu = False
+
 if use_gpu: 
   network = network.cuda()
 network.eval()
